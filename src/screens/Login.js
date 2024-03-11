@@ -24,9 +24,10 @@ function Login() {
       alert("Enter Valid Credentials");
     }
     if(json.success){
+      //save the auth toke to local storage and redirect
+      localStorage.setItem('userEmail', credentials.email)
       localStorage.setItem("authToken",json.authToken);
       console.log(localStorage.getItem("authToken"));
-
       navigate("/");
     }
   };
@@ -34,9 +35,7 @@ function Login() {
   const onChange = (event) => {
     setcredentials({ ...credentials, [event.target.name]: event.target.value });
   
-
   };
-
 
   return (
     <div>
